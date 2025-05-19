@@ -31,5 +31,3 @@ Ini adalah website sederhana untuk menampilkan informasi tentang **SMK Negeri 1 
 1. Download atau clone repository ini.
 2. Pastikan file `logo.png` dan `image.jpg` sudah berada di folder yang sesuai.
 3. Buka file `index.html` menggunakan browser favorit kamu.
-
-## Struktur Folder
