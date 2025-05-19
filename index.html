@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Beranda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <style>
+  :root {
+    --navy: #101010;
+    --white: #ffffff;
+    --yellow: #FFDB58;
+    --bg-color: rgba(25, 25, 25, 0.95);
+    --text-color: #cccccc;
+  }
+
+  [data-theme="light"] {
+    --navy: #f0f0f0;
+    --white: #333333;
+    --bg-color: rgba(240, 240, 240, 0.95);
+    --text-color: #333333;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body {
+    background: var(--navy);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    overflow-x: hidden;
+  }
+
+  .background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('image.jpg') center/cover no-repeat;
+    filter: blur(4px) brightness(0.7);
+    z-index: -2;
+  }
+
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-color);
+    backdrop-filter: blur(10px);
+    padding: 8px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 2px solid var(--yellow);
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  #logo {
+    height: 45px;
+    width: auto;
+  }
+
+  .school-name {
+    color: var(--text-color);
+    font-size: clamp(0.9rem, 3vw, 1.4rem);
+    font-weight: 600;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+  }
+
+  .hamburger {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: var(--text-color);
+    position: relative;
+    transition: 0.3s;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    transition: 0.3s;
+  }
+
+  .hamburger::before { top: -8px; }
+  .hamburger::after { top: 8px; }
+
+  nav {
+    display: flex;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+  }
+
+  nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  nav a:hover {
+    color: var(--yellow);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--yellow);
+    transition: 0.3s;
+  }
+
+  nav a:hover::after,
+  nav a.active::after {
+    width: 100%;
+  }
+
+  nav a.active {
+    color: var(--yellow);
+    font-weight: 600;
+  }
+
+  .main-content {
+    min-height: 100vh;
+    padding: 120px 20px 60px;
+  }
+
+  .content-section {
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+  }
+
+  .content-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .typing-container {
+    position: relative;
+    min-height: 150px;
+    margin-bottom: 40px;
+  }
+
+  .typing {
+    font-size: clamp(1.5rem, 6vw, 3rem);
+    font-weight: bold;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid var(--text-color);
+    animation: typing 6s steps(40, end) infinite, blink-caret .75s step-end infinite;
+  }
+
+  .history-content {
+    font-weight: 300;
+    line-height: 1.8;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    text-align: justify;
+  }
+
+  .history-content h2 {
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+    margin-bottom: 25px;
+    color: var(--yellow);
+  }
+
+  @keyframes typing {
+    0% { width: 0; }
+    50% { width: 100%; }
+    100% { width: 0; }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--text-color); }
+  }
+
+  @media (max-width: 768px) {
+    header { padding: 8px 15px; }
+    #logo { height: 40px; }
+    .menu-toggle { display: block; }
+
+    nav ul {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      height: 100vh;
+      width: 100%;
+      flex-direction: column;
+      background: rgba(25, 25, 25, 0.98);
+      backdrop-filter: blur(15px);
+      padding: 90px 25px 30px;
+      transition: 0.3s;
+      gap: 20px;
+    }
+
+    nav ul.active { right: 0; }
+
+    nav a {
+      font-size: 1.1rem;
+      padding: 12px;
+      display: block;
+      border-left: 3px solid transparent;
+    }
+
+    nav a:hover {
+      border-left-color: var(--yellow);
+      background: rgba(255, 215, 88, 0.05);
+    }
+
+    .hamburger.active { background: transparent; }
+    .hamburger.active::before {
+      transform: rotate(45deg); top: 0; background: var(--yellow);
+    }
+    .hamburger.active::after {
+      transform: rotate(-45deg); top: 0; background: var(--yellow);
+    }
+
+    .typing {
+      white-space: normal;
+      border-right: none;
+      animation: typing-mobile 6s ease-in-out infinite;
+    }
+
+    @keyframes typing-mobile {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    nav ul { gap: 20px; }
+    nav a { font-size: 0.9rem; padding: 6px 10px; }
+  }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div id="particles-js"></div>
+
+  <header>
+    <div class="logo-container">
+      <img src="img/logo.png" alt="Logo Sekolah" id="logo">
+      <span class="school-name">SMK NEGERI 1 SIJUNJUNG</span>
+    </div>
+
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span class="hamburger"></span>
+    </button>
+
+    <nav>
+      <ul>
+        <li><a href="prodi.html" class="active">Program Study</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="content-section" id="welcome-section">
+      <div class="typing-container">
+        <h1 class="typing">Welcome to Website SKANSASI</h1>
+      </div>
+    </section>
+
+    <section class="content-section" id="history-section">
+      <div class="history-content">
+        <h2>Sejarah SMK Negeri 1 Sijunjung</h2>
+        <p>Pada 1973 Merupakan VILIAL SMEAN Talawi di Tanjung Ampalu dengan mempunyai siswa sebanyak 22 Orang 1 Kelas, 1988 Diresmikan sebagai SMEAN Tanjung Ampalu oleh MENDIKBUD, 1996 Berganti nama menjadi SMK N 1 Koto VII, 2004 Berobah menjadi SMK N 1 Sawahlunto/Sijunjung, 2007 Berganti nama menjadi SMK N 1 Sijunjung.</p>
+        <p>Kepala sekolah yang pernah memimpin SULSASIH sebagai pelaksana sekolah VILIAL, TABRI MUSTAFA, SH , Drs. SYAMSIRWAN BASAR, Drs. GAMAL, Drs. SYAFRINAL, Drs. SYAFRIYAL, Drs. ANTONIUS, Sekarang dipimpin oleh, dengan 5 Jurusan yaitu : 3 jurusan bisnis manajemen AKUNTANSI, Adm PERKANTORAN, PENJUALAN, 1 Jurusan teknologi TI/MULTIMEDIA dan TKJ, dan Tata Boga Dengan jumlah siswa 686 orang jumlah tenaga pendidik 52 orang tenaga kependidikan 18 orang.</p>
+      </div>
+    </section>
+  </main>
+  <footer style="text-align: center; padding: 20px 10px; font-size: 0.9rem; color: var(--text-color); background: transparent;">
+    <hr style="margin-bottom: 10px; border: 0; border-top: 1px solid var(--yellow); width: 100%;">
+    <p>&copy; <span id="year"></span> Created with passion by <strong>Luqmanul Hakim</strong> | All rights reserved.</p>
+  </footer>
+
+  <script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navUl = document.querySelector('nav ul');
+  const hamburger = document.querySelector('.hamburger');
+
+  menuToggle.addEventListener('click', () => {
+    navUl.classList.toggle('active');
+    hamburger.classList.toggle('active');
+    document.body.classList.toggle('no-scroll');
+  });
+
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      if(window.innerWidth < 768) {
+        navUl.classList.remove('active');
+        hamburger.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+      }
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  const sections = document.querySelectorAll('.content-section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        if(entry.target.id === 'welcome-section') {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      } else {
+        if(entry.target.id === 'welcome-section') {
+          const scrollY = window.scrollY;
+          const opacity = 1 - (scrollY / 300);
+          entry.target.style.opacity = Math.max(opacity, 0);
+          entry.target.style.transform = `translateY(${scrollY * 0.3}px)`;
+        }
+      }
+    });
+  }, { threshold: 0.1 });
+
+  sections.forEach(section => observer.observe(section));
+
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    document.querySelector('.background').style.transform = `translateY(${scrolled * 0.5}px)`;
+  });
+
+  particlesJS('particles-js', {
+    particles: {
+      number: { value: 80, density: { enable: true, value_area: 800 } },
+      color: { value: "#666666" },
+      shape: { type: "circle" },
+      opacity: { value: 0.3, random: true },
+      size: { value: 3, random: true },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#ffffff",
+        opacity: 0.4,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 3,
+        direction: "none",
+        random: false,
+        straight: false,
+        out_mode: "out",
+        bounce: false
+      }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "repulse" },
+        onclick: { enable: true, mode: "push" }
+      },
+      modes: {
+        repulse: { distance: 100 },
+        push: { particles_nb: 4 }
+      }
+    },
+    retina_detect: true
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

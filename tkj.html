@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teknik Komputer & Jaringan</title>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #f0f0f0;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .detail-container {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 80px auto;
+      padding: 40px;
+      background: rgba(40, 40, 40, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 219, 88, 0.2);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: #FFDB58;
+      margin-bottom: 25px;
+      text-align: center;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .desc, ul, .images, .back-btn {
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .desc {
+      line-height: 1.8;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .images img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .images img:hover {
+      transform: scale(1.05);
+    }
+
+    .back-btn {
+      display: block;
+      margin: 40px auto 0;
+      padding: 12px 30px;
+      background: #FFDB58;
+      color: #1a1a1a;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 219, 88, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div class="detail-container">
+    <h1>Teknik Komputer & Jaringan (TKJ)</h1>
+
+    <p class="desc">
+      Teknik Komputer dan Jaringan (TKJ) adalah jurusan yang mempelajari bagaimana merancang, membangun, mengelola, dan memelihara sistem jaringan komputer. Di era digital seperti sekarang, keahlian ini sangat dibutuhkan karena hampir seluruh aspek kehidupan terhubung melalui jaringan komputer, baik dalam dunia pendidikan, bisnis, industri, maupun pemerintahan.
+    </p>
+
+    <p class="desc">
+      TKJ mengajarkan perpaduan antara kemampuan teknis di bidang perangkat keras komputer, sistem operasi, serta teknologi jaringan kabel dan nirkabel (wireless). Mahasiswa TKJ tidak hanya diajarkan teori, tetapi juga banyak praktik langsung di lab untuk instalasi jaringan, konfigurasi perangkat, dan troubleshooting.
+    </p>
+
+    <p class="desc"><strong>Mata pelajaran dan keterampilan yang dipelajari:</strong></p>
+    <ul>
+      <li>Dasar-dasar komputer dan sistem operasi (Windows, Linux).</li>
+      <li>Jaringan LAN, WAN, dan Wireless.</li>
+      <li>Instalasi & konfigurasi perangkat jaringan seperti Router, Switch, dan Access Point.</li>
+      <li>Administrasi server: Web server, FTP, DNS, DHCP, Mail Server.</li>
+      <li>Keamanan jaringan & firewall.</li>
+      <li>Pemrograman dasar dan IoT (Internet of Things).</li>
+      <li>Virtualisasi & jaringan berbasis cloud.</li>
+      <li>Teknik troubleshooting dan dokumentasi jaringan.</li>
+    </ul>
+
+    <p class="desc"><strong>Peluang kerja lulusan TKJ:</strong></p>
+    <ul>
+      <li>Network Administrator / Network Engineer</li>
+      <li>Teknisi Jaringan dan Sistem Komputer</li>
+      <li>Administrator Server</li>
+      <li>IT Support dan Helpdesk</li>
+      <li>Network Security Specialist</li>
+      <li>Teknisi ISP / Telekomunikasi</li>
+      <li>Wirausaha bidang IT dan jaringan</li>
+      <li>Freelancer jasa instalasi jaringan & CCTV</li>
+    </ul>
+
+    <div class="images">
+      <img src="img/tkj1.jpg" alt="Lab Jaringan TKJ">
+      <img src="img/tkj2.jpg" alt="Konfigurasi Router Mikrotik">
+      <img src="img/tkj3.jpg" alt="Instalasi Jaringan Komputer">
+    </div>
+
+    <button class="back-btn" onclick="location.href='prodi.html'">
+      ← Kembali ke Menu Prodi
+    </button>
+  </div>
+
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#f0f0f0" },
+        shape: { type: "circle" },
+        opacity: { value: 0.10, random: true },
+        size: { value: 3, random: true },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#f0f0f0",
+          opacity: 0.8,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 3,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "out",
+          bounce: false
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+</body>
+</html>
